@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>coromix</title>
+    <meta name="description" content="coromix">
+    <meta name="author" content="AC">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div style="padding-top:5rem">
+            <h1>Coromix</h1>
+            <div style="padding-top:5rem">
+                <video muted height="480">
+                    <source src="assets/media/happyday/Direttore.m4v" type="video/mp4">
+                </video> 
+            </div>
+            <div style="padding-top:5rem">
+                <div class="row">
+                    <div class="col-5">
+                        <h3>Base </h3>
+                    </div>
+                    <div class="col-7">
+                        <button class="btn btn-outline-warning shadow-none mute" onclick="mute(this)">Mute</button>
+                        <button class="btn btn-outline-danger shadow-none solo" onclick="solo(this)">Solo</button>
+                        <audio id="Base">
+                            <source src="assets/media/happyday/Base.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h3>Basso </h3>
+                    </div>
+                    <div class="col-7">
+                        <button class="btn btn-outline-warning shadow-none mute" onclick="mute(this)">Mute</button>
+                        <button class="btn btn-outline-danger shadow-none solo" onclick="solo(this)">Solo</button>
+                        <audio id="Basso">
+                            <source src="assets/media/happyday/Basso.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h3>Tenore </h3>
+                    </div>
+                    <div class="col-7">
+                        <button class="btn btn-outline-warning shadow-none mute" onclick="mute(this)">Mute</button>
+                        <button class="btn btn-outline-danger shadow-none solo" onclick="solo(this)">Solo</button>
+                        <audio id="Tenore">
+                            <source src="assets/media/happyday/Tenore.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h3>Soprano </h3>
+                    </div>
+                    <div class="col-7">
+                        <button class="btn btn-outline-warning shadow-none mute" onclick="mute(this)">Mute</button>
+                        <button class="btn btn-outline-danger shadow-none solo" onclick="solo(this)">Solo</button>
+                        <audio id="Soprano">
+                            <source src="assets/media/happyday/Soprano.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h3>Solista</h3>
+                    </div>
+                    <div class="col-7">
+                        <button class="btn btn-outline-warning shadow-none mute" onclick="mute(this)">Mute</button>
+                        <button class="btn btn-outline-danger shadow-none solo" onclick="solo(this)">Solo</button>
+                        <audio id="Solista">
+                            <source src="assets/media/happyday/Solista.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top:5rem">
+                <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-success" onclick="play()">Play</button>
+                        <button type="button" class="btn btn-warning" onclick="pause()">Pause</button>
+                        <button type="button" class="btn btn-danger" onclick="stop()">Stop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
