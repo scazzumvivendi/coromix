@@ -70,3 +70,42 @@ function stop() {
         v.currentTime = 0;
     }
 }
+
+function updateEnd() {
+
+    timeString = formatTime(document.querySelector('video').duration);
+    document.querySelector('#end-label').innerHTML = timeString;
+
+}
+
+updateEnd();
+
+function calculateCurrentTime(updateBar) {
+ 
+    var video = document.querySelector('video')
+    var time = video.duration * (updateBar.value / 100);
+    video.currentTime = time;
+    document.querySelector('#time-label').innerHTML = formatTime(video.currentTime);
+
+}
+
+  
+function updateTime(video) {
+    var value = (100 / video.duration) * video.currentTime;
+    document.querySelector('#timer').value = value;    
+    document.querySelector('#time-label').innerHTML = formatTime(video.currentTime);
+
+}
+   
+
+function formatTime(time) {
+    
+    dateObj = new Date(time * 1000);
+    hours = dateObj.getUTCHours();
+    minutes = dateObj.getUTCMinutes();
+    seconds = dateObj.getSeconds();
+
+    return minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+
+
+}
