@@ -73,33 +73,37 @@ function stop() {
 
 function updateEnd() {
 
-    timeString = formatTime(document.querySelector('video').duration);
+    const video = document.querySelector('video');
+    timeString = formatTime(video.duration);
     document.querySelector('#end-label').innerHTML = timeString;
 
 }
 
-updateEnd();
 
 function calculateCurrentTime(updateBar) {
- 
+
     var video = document.querySelector('video')
     var time = video.duration * (updateBar.value / 100);
     video.currentTime = time;
     document.querySelector('#time-label').innerHTML = formatTime(video.currentTime);
 
+    let audios = document.getElementsByTagName('audio');
+
+    for (a of audios) {
+        a.currentTime = time;
+    }
 }
 
-  
 function updateTime(video) {
     var value = (100 / video.duration) * video.currentTime;
-    document.querySelector('#timer').value = value;    
+    document.querySelector('#timer').value = value;
     document.querySelector('#time-label').innerHTML = formatTime(video.currentTime);
 
 }
-   
+
 
 function formatTime(time) {
-    
+
     dateObj = new Date(time * 1000);
     hours = dateObj.getUTCHours();
     minutes = dateObj.getUTCMinutes();
@@ -109,3 +113,43 @@ function formatTime(time) {
 
 
 }
+
+function loadMedia() {
+
+    const preload = Preload();
+    preload.fetch([
+        "assets/media/happyday/Direttore.m4v",
+        "assets/media/happyday/Base.mp3",
+        "assets/media/happyday/Basso.mp3",
+        "assets/media/happyday/Tenore.mp3",
+        "assets/media/happyday/Soprano.mp3",
+        "assets/media/happyday/Solista.mp3"
+    ]).then(([videoSrc, ...audiosSrc]) => {
+
+        const video = document.querySelector('#' + findId(videoSrc.url))
+
+        video.src = videoSrc.blobUrl;
+        const heights = [240, 360, 480];
+        const totalHeight = document.documentElement.clientHeight / 2;
+        let closest = heights.sort((a, b) => Math.abs(totalHeight - a) - Math.abs(totalHeight - b))[0];
+        video.height = closest;
+        document.querySelector('#timer').value = 0;
+
+
+        for (a of audiosSrc) {
+            document.querySelector('#' + findId(a.url)).src = a.blobUrl;
+        }
+
+        
+
+        document.querySelector('.container').style.display = "block";
+    });
+
+}
+
+function findId(URL) {
+    const tk1 = URL.split('/');
+    const tk2 = tk1[tk1.length - 1].split('.');
+    return tk2[0];
+}
+loadMedia();

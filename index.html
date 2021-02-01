@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -24,9 +23,7 @@
                     <h2 style="padding-top:2rem" class="text-align-center">Oh, happy day</h2>
                     <div style="padding-top:2rem">
                         <div class="row justify">
-                            <video muted height="480" preload ontimeupdate="updateTime(this)">
-                                <source src="assets/media/happyday/Direttore.m4v" type="video/mp4">
-                            </video>
+                            <video id="Direttore" muted ontimeupdate="updateTime(this)" onloadedmetadata="updateEnd()"></video>
                         </div>
                     </div>
                     <div style="padding-top:2rem">
@@ -37,7 +34,7 @@
                                 <label for="range" id="start-label" class="float-left">00.00</label>
                                 <label for="range" id="end-label" class="float-right">end</label>
                                 <input type="range" class="custom-range" id="timer" onmousedown="pause()"
-                                    onmouseup="play()" onchange="calculateCurrentTime(this)">
+                                    onchange="calculateCurrentTime(this)">
                                 <label for="range" id="time-label" class="float-left">00.00</label>
                             </div>
                             <div class="col-3">
@@ -70,7 +67,6 @@
                                 <button class="btn btn-outline-danger shadow-none solo"
                                     onclick="solo(this)">Solo</button>
                                 <audio id="Base">
-                                    <source src="assets/media/happyday/Base.mp3" type="audio/mpeg">
                                 </audio>
                             </div>
                         </div>
@@ -86,7 +82,6 @@
                                 <button class="btn btn-outline-danger shadow-none solo"
                                     onclick="solo(this)">Solo</button>
                                 <audio id="Basso">
-                                    <source src="assets/media/happyday/Basso.mp3" type="audio/mpeg">
                                 </audio>
                             </div>
 
@@ -103,7 +98,6 @@
                                 <button class="btn btn-outline-danger shadow-none solo"
                                     onclick="solo(this)">Solo</button>
                                 <audio id="Tenore">
-                                    <source src="assets/media/happyday/Tenore.mp3" type="audio/mpeg">
                                 </audio>
                             </div>
 
@@ -120,7 +114,6 @@
                                 <button class="btn btn-outline-danger shadow-none solo"
                                     onclick="solo(this)">Solo</button>
                                 <audio id="Soprano">
-                                    <source src="assets/media/happyday/Soprano.mp3" type="audio/mpeg">
                                 </audio>
                             </div>
 
@@ -137,7 +130,6 @@
                                 <button class="btn btn-outline-danger shadow-none solo"
                                     onclick="solo(this)">Solo</button>
                                 <audio id="Solista">
-                                    <source src="assets/media/happyday/Solista.mp3" type="audio/mpeg">
                                 </audio>
                             </div>
                         </div>
@@ -145,6 +137,7 @@
                 </div>
             </div>
         </div>
-
+        
+        <script src="https://unpkg.com/preload-it"></script>
         <script src="js/scripts.js"></script>
 </body>
