@@ -1,3 +1,7 @@
+let audios = document.getElementsByTagName('audio');
+let videos = document.getElementsByTagName('video');
+let video = videos[0];
+
 function mute(element) {
 
     if (!element.classList.contains('mute-active')) {
@@ -30,9 +34,6 @@ function solo(element) {
 }
 
 function play() {
-    let audios = document.getElementsByTagName('audio');
-    let videos = document.getElementsByTagName('video');
-
     for (a of audios) {
         a.play();
     }
@@ -44,9 +45,6 @@ function play() {
 }
 
 function pause() {
-    let audios = document.getElementsByTagName('audio');
-    let videos = document.getElementsByTagName('video');
-
     for (a of audios) {
         a.pause();
     }
@@ -58,8 +56,6 @@ function pause() {
 }
 
 function stop() {
-    let audios = document.getElementsByTagName('audio');
-    let videos = document.getElementsByTagName('video');
 
     for (a of audios) {
         a.pause();
@@ -73,7 +69,6 @@ function stop() {
 
 function updateEnd() {
 
-    const video = document.querySelector('video');
     timeString = formatTime(video.duration);
     document.querySelector('#end-label').innerHTML = timeString;
 
@@ -86,8 +81,6 @@ function calculateCurrentTime(updateBar) {
     var time = video.duration * (updateBar.value / 100);
     video.currentTime = time;
     document.querySelector('#time-label').innerHTML = formatTime(video.currentTime);
-
-    let audios = document.getElementsByTagName('audio');
 
     for (a of audios) {
         a.currentTime = time;
@@ -127,7 +120,6 @@ function loadMedia() {
     ]).then(([videoSrc, ...audiosSrc]) => {
 
         const video = document.querySelector('#' + findId(videoSrc.url))
-
         video.src = videoSrc.blobUrl;
         const heights = [240, 360, 480];
         const totalHeight = document.documentElement.clientHeight / 2;
@@ -135,12 +127,9 @@ function loadMedia() {
         video.height = closest;
         document.querySelector('#timer').value = 0;
 
-
         for (a of audiosSrc) {
             document.querySelector('#' + findId(a.url)).src = a.blobUrl;
         }
-
-        
 
         document.querySelector('.container').style.display = "block";
     });
