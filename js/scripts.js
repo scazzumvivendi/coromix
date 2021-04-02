@@ -132,7 +132,14 @@ function loadMedia() {
         }
 
         document.querySelector('.container').style.display = "block";
+        document.querySelector(".loader").style.display = "none";
     });
+
+    preload.onprogress = event => {
+        document.querySelector(".progress-bar").style.width = event.progress+'%';
+        document.querySelector(".percentage").textContent = event.progress+'%';
+        document.querySelector(".progress-bar")["aria-valuenow"]= event.progress;
+    }      
 
 }
 
